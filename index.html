@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="./css/style.css" rel="stylesheet">
+
+    <title>To Do List</title>
+</head>
+<body>
+    <main>
+        <section id="to-do-list">
+            <div class="container to-do-list-container">
+                <div class="new-task grid-row">
+                    <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-xs-7 col-xxs-12 new-task-cart">
+                        <form>
+                            <div class="form-groupe">
+                                <input type="text" class="task-input task-name" placeholder="Enter The Tasl Name Here ... "/>
+                                <span class="error-message">
+                                    
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-xs-5 col-xxs-12 new-task-cart">
+                        <div class="new-task-action add-action">
+                            <a href="#" class="add-act push" onclick="addTask()">Add</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tasks grid-row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12 task-cart">
+                        <div class="task task-1">
+                            <div class="task-description">
+                                Learn HTML
+                            </div>
+                            <div class="task-actions">
+                                <div class="task-action edit-action">
+                                    <a class="btn edt-btn">
+                                        <i class="fa-solid fa-pencil"></i>
+                                    </a>
+                                </div>
+                                <div class="task-action delete-action">
+                                    <a class="btn rm-btn" onclick="deleteTask()">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </a>
+                                </div>
+                                <div class="task-action show-action">
+                                    <a class="btn shw-btn">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12 task-cart">
+                        <div class="task task-1">
+                            <div class="task-description">
+                                Learn HTML 5
+                            </div>
+                            <div class="task-actions">
+                                <div class="task-action edit-action">
+                                    <a class="btn edt-btn">
+                                        <i class="fa-solid fa-pencil"></i>
+                                    </a>
+                                </div>
+                                <div class="task-action delete-action">
+                                    <a class="btn rm-btn" onclick="deleteTask()">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </a>
+                                </div>
+                                <div class="task-action show-action">
+                                    <a class="btn shw-btn">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12 task-cart">
+                        <div class="task task-1">
+                            <div class="task-description">
+                                Learn Css
+                            </div>
+                            <div class="task-actions">
+                                <div class="task-action edit-action">
+                                    <a class="btn edt-btn">
+                                        <i class="fa-solid fa-pencil"></i>
+                                    </a>
+                                </div>
+                                <div class="task-action delete-action">
+                                    <a class="btn rm-btn">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </a>
+                                </div>
+                                <div class="task-action show-action">
+                                    <a class="btn shw-btn" onclick="deleteTask()">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12 task-cart">
+                        <div class="task task-1">
+                            <div class="task-description">
+                                Learn Css3
+                            </div>
+                            <div class="task-actions">
+                                <div class="task-action edit-action">
+                                    <a class="btn edt-btn">
+                                        <i class="fa-solid fa-pencil"></i>
+                                    </a>
+                                </div>
+                                <div class="task-action delete-action">
+                                    <a class="btn rm-btn" onclick="deleteTask()">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </a>
+                                </div>
+                                <div class="task-action show-action">
+                                    <a class="btn shw-btn">
+                                        <i class="fa-solid fa-eye"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>        
+                </div>
+            </div>
+        </section>
+        <div class="toast">
+            <span class="toast-text">
+                
+            </span>
+        </div>
+    </main>
+    <script src="./js/script.js"></script>
+</body>
+</html>
