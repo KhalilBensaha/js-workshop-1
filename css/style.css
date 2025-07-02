@@ -143,6 +143,41 @@ a{
     }
 }
 
+.modal {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s ease-in-out;
+}
+
+.update-task {
+    background: #fff;
+    padding: 10px;
+    width: 50%;
+    border-radius: 10px;
+    transform: scale(0);
+    transition: all .3s ease-in-out;
+}
+
+.exit {
+    text-align: end;
+    font-size: 1.6rem;
+    color: red;
+}
+
+.d-none{
+    display: none;
+}
+
 /* Animations */
 
 .task:hover{
@@ -156,6 +191,11 @@ a{
 
 .add-act:hover{
     opacity: .7;
+}
+
+
+.update-task.zoom-in{
+    transform: scale(1);
 }
 
 
