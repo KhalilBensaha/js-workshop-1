@@ -141,6 +141,48 @@ function hideToast(){
 
 
 
+const modal = document.querySelector('.modal'),
+      updateTask = document.querySelector('.update-task'),
+      updateTaskInput = document.querySelector('.update-task-input');
+
+let updateTaskIndex;
+
+function showModal(idTask){
+
+    updateTaskIndex = tasks.findIndex((task) => task.idTask == idTask);
+    let selectedTask = tasks[updateTaskIndex];
+
+    updateTaskInput.value = selectedTask.taskContent;
+
+    modal.classList.remove('d-none');
+
+    setTimeout(() => {
+        updateTask.classList.add('zoom-in');
+    }, 150);
+}
+
+function hideModal(){
+    updateTask.classList.remove('zoom-in');
+
+    setTimeout(() => {
+        modal.classList.add('d-none');
+    }, 300);
+}
+
+function updateTaskAction(){
+    if(updateTaskInput.value != '' && updateTaskInput.value != tasks[updateTaskIndex].taskContent){
+        tasks[updateTaskIndex].taskContent = updateTaskInput.value;
+        showTasks();
+        hideModal();
+        showToast(`Task N: ${updateTaskIndex+1} updated successfully <i class="fa-solid fa-check"></i>`);
+        hideToast();
+    }else{
+        console.log('error');
+    }
+}
+
+
+
 
 
 

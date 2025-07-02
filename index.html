@@ -146,6 +146,32 @@
                 
             </span>
         </div>
+         <div class="modal d-none">
+            <div class="update-task grid-row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12 new-task-cart">
+                    <div class="exit" onclick="hideModal()">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12 new-task-cart">
+                    <div class="new-task-form">
+                        <form class="grid-row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12 new-task-form-cart">
+                                <div class="form-groupe">
+                                    <input type="text" class="task-input task-name update-task-input" placeholder="Enter The Task Name ... " />
+                                    <span class="update-task-error-message"></span>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12 new-task-form-cart">
+                                <div class="new-task-action update-task-action">
+                                    <a href="#" class="updt-act" onclick="updateTaskAction()">Update</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <script src="./js/script.js"></script>
 </body>
