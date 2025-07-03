@@ -5,7 +5,8 @@
 body{
     padding: 0;
     margin: 0;
-    background: #0b87ff
+    background: #0b87ff;
+    position: relative; /* So important add it */
 }
 
 a{
@@ -55,7 +56,7 @@ a{
     display: block;
 }
 
-.add-act {
+.add-act, .updt-act {
     background: #0b87ff;
     color: #fff;
     width: 100%;
@@ -192,7 +193,6 @@ a{
 .add-act:hover{
     opacity: .7;
 }
-
 
 .update-task.zoom-in{
     transform: scale(1);

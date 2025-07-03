@@ -26,46 +26,26 @@ let tasks = [
     }
 ];
 
-// get the error message
-let errorMessage = document.querySelector('.error-message');
 
-function addTask(){
-    let taskName = document.querySelector('.task-input').value;
-    if(taskName.trim() === ''){
-        errorMessage.textContent = 'Please enter a task name';
-    }
-    else{
-        let newTask = {
-            idTask : tasks.length + 1,
-            taskContent : taskName,
-            completed : false
-        };
-        tasks.push(newTask);
-        console.log(tasks);
-        errorMessage.textContent = '';
-        showTasks();
-        document.querySelector('.task-input').value = '';
-        showToast(`Task: ${newTask.taskContent} successfully added  <i class="fa-solid fa-check"></i>`);
-        hideToast();
-    }
-};
-
-// add the task
-let taskDiv = document.querySelector('.tasks');
+///Show tasks 
+const tasksDiv = document.querySelector('.tasks');
 
 function generateTask(task){
-    let completedClass = task.completed ? 'completed' : '';
+    let completedClass = '';
+    if(task.completed){
+        completedClass = 'completed';
+    }
     return (
         `
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xxs-12 task-cart">
-            <div class="task ${completedClass} task-${task.idTask}" onclick="changeTaskState(${task.idTask})">
-                <div class="task-description">
+            <div class="task ${completedClass} task-${task.idTask}">
+                <div class="task-description" onclick="changeTaskState(${task.idTask})">
                     ${task.taskContent}
                 </div>
                 <div class="task-actions">
                     <div class="task-action edit-action">
-                        <a class="btn edt-btn">
-                            <i class="fa-solid fa-pencil"></i>
+                        <a class="btn edt-btn" onclick="showModal(${task.idTask})">
+                            <i class="fa-regular fa-pen-to-square"></i>
                         </a>
                     </div>
                     <div class="task-action delete-action">
@@ -83,63 +63,82 @@ function generateTask(task){
         </div>
         `
     )
-};
+}
 
 function showTasks(){
-    taskDiv.innerHTML = '';
-    tasks.forEach(task => {
-        taskDiv.innerHTML += generateTask(task);
+    tasksDiv.innerHTML='';
+    tasks.forEach((task) => {
+        tasksDiv.innerHTML += generateTask(task);
     });
-};
+}
 
-// show the tasks
 showTasks();
 
-// complete the task
-function changeTaskState(idTask){
-    tasks.forEach(task => {
-        if(task.idTask === idTask){
-            task.completed = !task.completed;
-        }
-    });
-    showTasks();
-};
+/// Complete task or not
+const taskDivs = document.querySelectorAll('.task');
 
-// delete the task
-function deleteTask(idTask){
-    tasks = tasks.filter(task => task.idTask !== idTask);
+function changeTaskState(idTask){
+    let indexOfTask = tasks.findIndex((task) => task.idTask == idTask);
+    /// tasks[indexOfTask].completed = !tasks[indexOfTask].completed;
+    if(tasks[indexOfTask].completed==true){
+        tasks[indexOfTask].completed=false;
+    }else{
+        tasks[indexOfTask].completed = true;
+    }
     showTasks();
-    showToast(`Task: ${tasks.taskContent} successfully deleted  <i class="fa-solid fa-check"></i>`);
-    hideToast();
-};
+}
+
+//// Add task
+const taskInput = document.querySelector('.task-input'),
+      errorMessageHtmlElement = document.querySelector('.error-message');
+
+function getMaxIdTask(){
+    return tasks[tasks.length - 1].idTask;
+}
+function addTask(){
+    if(taskInput.value===''){
+        errorMessageHtmlElement.textContent = `You should write a task name`;
+    }else{
+        let newTask = {
+            idTask : getMaxIdTask()+1,
+            taskContent : taskInput.value,
+            completed : false
+        }
+        tasks.push(newTask); /// Add new task to tasks table ==> Add to database table
+        ///tasksDiv.innerHTML += generateTask(newTask);
+        showTasks();
+        errorMessageHtmlElement.textContent = '';
+        taskInput.value='';
+
+        ///Showing and hiding toast
+        showToast(`Task: ${newTask.taskContent} successfully added  <i class="fa-solid fa-check"></i>`);
+        hideToast();
+    }
+}
+
+const toastDiv = document.querySelector('.toast'),
+      toastText = document.querySelector('.toast-text');
 
 function showToast(message){
-    let toast = document.querySelector('.toast');
-    toast.innerHTML = message;
-    toast.style.display = 'block';
-};
+    toastDiv.style.display = 'block';
+    toastText.innerHTML = message;
+}
 
-// // edit the task
-// function editTask(idTask){
-//     tasks.forEach(task => {
-//         if(task.idTask === idTask){
-//             task.taskContent = document.querySelector('.task-input').value;
-//         }
-//     });
-//     showTasks();
-// };
-
-/******************************************** */
-
-// hide the toast
 function hideToast(){
-    let toast = document.querySelector('.toast');
     setTimeout(()=>{
-        toast.style.display = 'none';;
+        toastDiv.style.display = 'none';;
     }, 2000);
-};
+}
 
-
+///Delete task
+function deleteTask(idTask){
+    let indexOfTask = tasks.findIndex((task) => task.idTask == idTask),
+        deletedTask = tasks[indexOfTask];
+    tasks.splice(indexOfTask, 1); /// index of task = idTask - 1
+    showTasks();
+    showToast(`Task: ${deletedTask.taskContent} successfully deleted  <i class="fa-solid fa-check"></i>`);
+    hideToast();
+}
 
 const modal = document.querySelector('.modal'),
       updateTask = document.querySelector('.update-task'),
@@ -180,9 +179,6 @@ function updateTaskAction(){
         console.log('error');
     }
 }
-
-
-
 
 
 
